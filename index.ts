@@ -4,8 +4,7 @@ import { SERVER_PORT } from './globals/environments';
 import { router } from './routes/router';
 import cors from 'cors';
 
-const server = new Server();
-
+const server = Server.instance;
 //Body Paser
 server.app.use(bodyParser.urlencoded({ extended: true }));
 server.app.use(bodyParser.json() );
