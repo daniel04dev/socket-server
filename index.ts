@@ -1,5 +1,5 @@
 import bodyParser from 'body-parser';
-import Server from './classes/server';
+import Server from './models/server';
 import { SERVER_PORT } from './globals/environments';
 import { router } from './routes/router';
 import cors from 'cors';

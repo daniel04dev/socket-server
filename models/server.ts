@@ -19,7 +19,7 @@ export default class Server {
     public port: number;
 
     private httpServer: http.Server;
-    private io: ServerIO;
+    public io: ServerIO;
 
     //Configuracion de conexion de sockets
     private constructor() {
@@ -49,13 +49,19 @@ export default class Server {
     private escucharSockets() {
         console.log('Escuchando conexiones -- sockets');
         this.io.on('connection', (cliente) => {
-            console.log('cliente conectado');
+
+            //Conectar cliente
+            socket.conectarCliente(cliente);
+
+            // Configurar usuario
+            socket.configurarUsuario(cliente);
 
             // Notificacion de desconexion de un cliente
             socket.desconectar(cliente);
 
-            //Escuchar mensaje
+            // Escuchar mensaje
             socket.mensaje(cliente, this.io);
+
         });
 
     }
